@@ -1,9 +1,20 @@
-import types from './types';
+import types from "./types";
+import axios from "axios";
 
-export function signIn(){
-    return { type: types.SIGN_IN };
+const BASE_URL = "http://api.reactprototypes.com";
+
+export function createAccount(userInfo) {
+	return async dispatch => {
+		const resp = await axios.post(`${BASE_URL}/signup`, userInfo);
+
+		console.log("Sign Up Response:", resp);
+	};
 }
 
-export function signOut(){
-    return { type: types.SIGN_OUT };
+export function signIn() {
+	return { type: types.SIGN_IN };
+}
+
+export function signOut() {
+	return { type: types.SIGN_OUT };
 }
